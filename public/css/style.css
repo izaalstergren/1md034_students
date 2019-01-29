@@ -1,0 +1,104 @@
+@import 'https://fonts.googleapis.com/css?family=Comfortaa';
+
+body {
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 14pt;
+}
+
+header {
+  text-align: center;
+  font-style: bold;
+  height: 25em;
+  overflow-x: hidden;
+}
+
+header img {
+  margin: 0 auto;
+  opacity: 0.5;
+  height: 100%;
+}
+
+h1 {
+  font-size: 65px;
+  position: absolute;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+
+.allergy {
+  text-transform: uppercase;
+  color: #ff5500;
+}
+
+#burgermenu {
+  background-color: black;
+  color: white;
+  text-align: center;
+  border: 6px ridge darkgray;
+}
+
+section {
+  padding: 1em;
+}
+
+#orderinfo {
+  background-color: white;
+  border: 6px double darkgray;
+  margin-top: 1em;
+}
+
+#orderwrapper {
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+button {
+  margin-top: 1em;
+}
+
+button:hover {
+  background-color: #ffffaa;
+}
+
+button, input, select {
+  cursor: pointer;
+}
+
+.wrapper {
+     display: grid;
+     grid-gap: 10px;
+     grid-template-columns: 100px 100px 100px:auto;
+ }
+
+ .box {
+     padding: 20px;
+
+ }
+
+ .box ul {
+   list-style: none;
+   margin-left: -40px;
+ }
+
+ .a {
+     grid-column: 1;
+ }
+ .b {
+     grid-column: 2;
+ }
+ .c {
+     grid-column: 3;
+ }
+
+ @media screen and (max-width: 1000px) {
+   #burgermenu {
+     overflow-x: scroll;
+   }
+
+   #orderinfo {
+     overflow-x: scroll;
+   }
+}

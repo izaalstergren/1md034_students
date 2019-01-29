@@ -1,10 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>DELI-VERY</title>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <title>Bob's Burgers</title>
+        <meta charset="utf-8"/>
     </head>
     <body>
-        <h1>Hello World!!!</h1>
-        <a href="/map" target="_blank">Open map in new window</a>.
+      <main>
+        <header>
+          <h1>Welcome to Bob's Burgers!</h1>
+          <img src="/img/header3.jpg" alt="Outside of bobs burger restaurant" />
+        </header>
+        <section id="burgermenu">
+          <h2>Select burger</h2>
+          <p>
+            This is where you execute burger selection
+          </p>
+          <div class="wrapper">
+            <div class="box a">
+              <h4>Cheeses is Born Burger</h4>
+              <img src="/img/cheeseburger.jpg"
+                  alt="Cheeseburger" width=250px height=230px/>
+              <ul>
+                <li>750 kCal</li>
+                <li>Contains <span class="allergy">lactose</span></li>
+                <li>Contains <span class="allergy">gluten</span></li>
+              </ul>
+            </div>
+            <div class="box b">
+              <h4>Rest in Peas Burger</h4>
+              <img src="/img/veggieburger.jpg"
+                  alt="Veggieburger" width=250px height=230px/></td>
+              <ul>
+                <li>450 kCal</li>
+                <li>Vegetarian</li>
+                <li>Contains <span class="allergy">gluten</span></li>
+              </ul>
+            </div>
+            <div class="box c">
+              <h4>Somethings Fishy Burger</h4>
+              <img src="/img/Fishburger.jpg"
+                  alt="Fishburger" width=250px height=230px/></td>
+              <ul>
+                <li>600 kCal</li>
+                <li>Contains <span class="allergy">fish</span></li>
+                <li>Contains <span class="allergy">gluten</span></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section id="orderinfo">
+          <div id="orderwrapper">
+            <h2>Customer information</h2>
+            <p>
+              This is where you provide neccessary information
+            </p>
+            <h3>Delivery information:</h3>
+            <section>
+              <form>
+                <p>
+                  <label for="name">Full name</label>
+                  <input type="text" id="name" name="fullname"
+                  required="required" placeholder="First and Last name">
+                </p>
+                <p>
+                  <label for="email">E-mail</label>
+                  <input type="email" id="email" name ="em"
+                  required="required" placeholder="E-mail address">
+                </p>
+                <p>
+                  <label for="street">Street</label>
+                  <input type="text" id="street" name="str"
+                  required="required" placeholder="Street name">
+                </p>
+                <p>
+                  <label for="house">House</label>
+                  <input type="text" id="house" name="housenr"
+                  required="required" placeholder="House number">
+                </p>
+                <p>
+                  <label for="payment">Payment options</label>
+                  <select id="payment" name="pay" required="required">
+                    <option>Credit card</option>
+                    <option>Debit card</option>
+                    <option>Swish</option>
+                    <option>Bitcoin</option>
+                  </select>
+                </p>
+                <p>
+                  <p>Gender</p>
+                  <input type="radio" name="gender" value="male"> Male
+                  <input type="radio" name="gender" value="female"> Female
+                  <input type="radio" name="gender" value="nonbinary"> Non-binary
+                  <input type="radio" name="gender" value="undisclosed"
+                  checked="checked"> Undisclosed
+                </p>
+                  <button type="submit">
+                    <img src="/img/burgerbutton.png" width=50px>
+                    Place order
+                  </button>
+              </form>
+            </div>
+          </section>
+        </section>
+      </main>
+      <hr>
+      <footer>
+        &copy; 2019 Bob's Burgers Inc.
+      </footer>
     </body>
 </html>
