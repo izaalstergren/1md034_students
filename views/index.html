@@ -4,20 +4,41 @@
         <link rel="stylesheet" type="text/css" href="/css/style.css">
         <title>Bob's Burgers</title>
         <meta charset="utf-8"/>
+        <!--<script src="/js/js_script.js" defer></script>-->
+        <script src="https://vuejs.org/js/vue.js"></script>
+        <script src="/js/vue_script.js" defer></script>
     </head>
     <body>
+      <header>
+        <h1>Welcome to Bob's Burgers!</h1>
+        <img src="/img/header3.jpg" alt="Outside of bobs burger restaurant" />
+      </header>
       <main>
-        <header>
-          <h1>Welcome to Bob's Burgers!</h1>
-          <img src="/img/header3.jpg" alt="Outside of bobs burger restaurant" />
-        </header>
         <section id="burgermenu">
           <h2>Select burger</h2>
           <p>
             This is where you execute burger selection
           </p>
-          <div class="wrapper">
-            <div class="box a">
+          <div id='wrapper'>
+            <!--CODE FOR VUE-->
+            <div v-for="burger in burgers" class="box" v-bind:class=burger.box()>
+                <h4>{{ burger.name() }}</h4>
+                <img v-bind:src=burger.img() v-bind:alt=burger.name()
+                     width=250px height=230px/>
+                <ul>
+                  <li>{{ burger.kcal() }}</li>
+                  <li v-if="burger.lactose()">
+                    Contains <span class="allergy">lactose</span>
+                  </li>
+                  <li v-if="burger.gluten()">
+                    Contains <span class="allergy">gluten</span>
+                  </li>
+                </ul>
+            </div>
+            <!--END OF CODE FOR VUE-->
+
+            <!--RAW HTML CODE-->
+            <!--<div class="box a">
               <h4>Cheeses is Born Burger</h4>
               <img src="/img/cheeseburger.jpg"
                   alt="Cheeseburger" width=250px height=230px/>
@@ -33,7 +54,6 @@
                   alt="Veggieburger" width=250px height=230px/></td>
               <ul>
                 <li>450 kCal</li>
-                <li>Vegetarian</li>
                 <li>Contains <span class="allergy">gluten</span></li>
               </ul>
             </div>
@@ -43,10 +63,10 @@
                   alt="Fishburger" width=250px height=230px/></td>
               <ul>
                 <li>600 kCal</li>
-                <li>Contains <span class="allergy">fish</span></li>
+                <li>Contains <span class="allergy">lactose</span></li>
                 <li>Contains <span class="allergy">gluten</span></li>
               </ul>
-            </div>
+            </div> -->
           </div>
         </section>
         <section id="orderinfo">
