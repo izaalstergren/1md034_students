@@ -33,7 +33,7 @@ h1 {
 }
 
 #burgermenu {
-  background-color: black;
+  background-color: #151515;
   color: white;
   text-align: center;
   border: 6px ridge darkgray;
@@ -43,13 +43,13 @@ section {
   padding: 1em;
 }
 
-#orderinfo {
+.orderinfo {
   background-color: white;
   border: 6px double darkgray;
   margin-top: 1em;
 }
 
-#orderwrapper {
+#formwrapper, #infowrapper {
   width: 500px;
   margin: 0 auto;
   text-align: center;
@@ -75,7 +75,10 @@ button, input, select {
 
  .box {
      padding: 20px;
+ }
 
+ .box h4 {
+   display: inline-block;
  }
 
  .box ul {
@@ -98,7 +101,7 @@ button, input, select {
      overflow-x: scroll;
    }
 
-   #orderinfo {
+   .orderinfo {
      overflow-x: scroll;
    }
 }

@@ -1,45 +1,63 @@
 'use strict';
 
-function MenuItem(productName, productImage, productKcal, plactose, pgluten, pbox) {
-    this.productName = productName;
-    this.productImage = productImage;
-    this.productKcal = productKcal;
-    this.plactose = plactose;
-    this.pgluten = pgluten;
-    this.pbox = pbox;
+function getForm() {
+  var name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
+  var street = document.getElementById("street").value;
+  var house = document.getElementById("house").value;
+  var payment = document.getElementById("payment").value;
+  var radios = document.getElementsByName("gender");
+  var gender = undefined;
 
-    this.name = function() {
-      return this.productName;
-    };
-    this.kcal = function() {
-      return this.productKcal;
+  for(var i = 0; i < radios.length; ++i) {
+    if (radios[i].checked) {
+      gender = radios[i].value;
+      break;
     }
-    this.img = function() {
-      return this.productImage;
-    }
-    this.lactose = function() {
-      return this.plactose;
-    }
-    this.gluten = function() {
-      return this.pgluten;
-    }
-    this.box = function() {
-      return this.pbox;
-    }
+  }
+
+  var checkboxes = document.getElementsByName("burgerOrder");
+  var burgers = [];
+
+  for(var i = 0; i < checkboxes.length; ++i) {
+      if (checkboxes[i].checked) {
+        burgers.push(checkboxes[i].id);
+      }
+  }
+
+  return [name, email, street, house, payment, gender, burgers];
 }
-
-var cheeseburger = new MenuItem("Cheeses is Born Burger",
-                   "/img/cheeseburger.jpg", 750, true, true, "a");
-var veggieburger = new MenuItem("Rest in Peas Burger",
-                   "/img/veggieburger.jpg", 450, false, true, "b");
-var fishburger = new MenuItem("Somethings Fishy Burger",
-                   "/img/Fishburger.jpg", 600, true, true, "c");
-
-var burgersArray = [cheeseburger, veggieburger, fishburger];
 
 var vm = new Vue({
   el: '#wrapper',
   data: {
-    burgers: burgersArray,
+    burgers: food
+  }
+})
+
+var vmb = new Vue({
+  el:'#ordering',
+  data: {
+    showorder: false,
+    orderName: "",
+    orderEmail: "",
+    orderStreet: "",
+    orderHouse: "",
+    orderPayment: "",
+    orderGender: "",
+    orderBurgers: "",
+  },
+  methods: {
+    orderDone: function() {
+      var result = getForm();
+      this.showorder = true;
+      this.orderName = result[0];
+      this.orderEmail = result[1];
+      this.orderStreet = result[2];
+      this.orderHouse = result[3];
+      this.orderPayment = result[4];
+      this.orderGender = result[5];
+      this.orderBurgers = result[6].join(', ');
+    }
   }
 })

@@ -5,6 +5,7 @@
         <title>Bob's Burgers</title>
         <meta charset="utf-8"/>
         <!--<script src="/js/js_script.js" defer></script>-->
+        <script type="text/javascript" src="/js/menu.js"></script>
         <script src="https://vuejs.org/js/vue.js"></script>
         <script src="/js/vue_script.js" defer></script>
     </head>
@@ -21,16 +22,17 @@
           </p>
           <div id='wrapper'>
             <!--CODE FOR VUE-->
-            <div v-for="burger in burgers" class="box" v-bind:class=burger.box()>
-                <h4>{{ burger.name() }}</h4>
-                <img v-bind:src=burger.img() v-bind:alt=burger.name()
+            <div v-for="burger in burgers" class="box" v-bind:class=burger.box>
+                <label v-bind:for=burger.name><h4>{{ burger.name }}</h4></label>
+                <input type="checkbox" v-bind:id=burger.name name="burgerOrder" />
+                <img v-bind:src=burger.img v-bind:alt=burger.name
                      width=250px height=230px/>
                 <ul>
-                  <li>{{ burger.kcal() }}</li>
-                  <li v-if="burger.lactose()">
+                  <li>{{ burger.kcal }}</li>
+                  <li v-if="burger.lactose">
                     Contains <span class="allergy">lactose</span>
                   </li>
-                  <li v-if="burger.gluten()">
+                  <li v-if="burger.gluten">
                     Contains <span class="allergy">gluten</span>
                   </li>
                 </ul>
@@ -69,60 +71,74 @@
             </div> -->
           </div>
         </section>
-        <section id="orderinfo">
-          <div id="orderwrapper">
-            <h2>Customer information</h2>
-            <p>
-              This is where you provide neccessary information
-            </p>
-            <h3>Delivery information:</h3>
-            <section>
-              <form>
-                <p>
-                  <label for="name">Full name</label>
-                  <input type="text" id="name" name="fullname"
-                  required="required" placeholder="First and Last name">
-                </p>
-                <p>
-                  <label for="email">E-mail</label>
-                  <input type="email" id="email" name ="em"
-                  required="required" placeholder="E-mail address">
-                </p>
-                <p>
-                  <label for="street">Street</label>
-                  <input type="text" id="street" name="str"
-                  required="required" placeholder="Street name">
-                </p>
-                <p>
-                  <label for="house">House</label>
-                  <input type="text" id="house" name="housenr"
-                  required="required" placeholder="House number">
-                </p>
-                <p>
-                  <label for="payment">Payment options</label>
-                  <select id="payment" name="pay" required="required">
-                    <option>Credit card</option>
-                    <option>Debit card</option>
-                    <option>Swish</option>
-                    <option>Bitcoin</option>
-                  </select>
-                </p>
-                <p>
-                  <p>Gender</p>
-                  <input type="radio" name="gender" value="male"> Male
-                  <input type="radio" name="gender" value="female"> Female
-                  <input type="radio" name="gender" value="nonbinary"> Non-binary
-                  <input type="radio" name="gender" value="undisclosed"
-                  checked="checked"> Undisclosed
-                </p>
-                  <button type="submit">
-                    <img src="/img/burgerbutton.png" width=50px>
-                    Place order
-                  </button>
-              </form>
+        <div id="ordering">
+          <section class="orderinfo">
+            <div id="formwrapper">
+              <h2>Customer information</h2>
+              <p>
+                This is where you provide neccessary information
+              </p>
+              <h3>Delivery information:</h3>
+              <section>
+                <form>
+                  <p>
+                    <label for="name">Full name</label>
+                    <input type="text" id="name" name="fullname"
+                    required="required" placeholder="First and Last name">
+                  </p>
+                  <p>
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name ="em"
+                    required="required" placeholder="E-mail address">
+                  </p>
+                  <p>
+                    <label for="street">Street</label>
+                    <input type="text" id="street" name="str"
+                    required="required" placeholder="Street name">
+                  </p>
+                  <p>
+                    <label for="house">House</label>
+                    <input type="text" id="house" name="housenr"
+                    required="required" placeholder="House number">
+                  </p>
+                  <p>
+                    <label for="payment">Payment options</label>
+                    <select id="payment" name="pay" required="required">
+                      <option>Credit card</option>
+                      <option>Debit card</option>
+                      <option>Swish</option>
+                      <option>Bitcoin</option>
+                    </select>
+                  </p>
+                  <p>
+                    <p>Gender</p>
+                    <input type="radio" name="gender" value="male"> Male
+                    <input type="radio" name="gender" value="female"> Female
+                    <input type="radio" name="gender" value="nonbinary"> Non-binary
+                    <input type="radio" name="gender" value="undisclosed"
+                    checked="checked"> Undisclosed
+                  </p>
+                </form>
+                <button v-on:click="orderDone" type="submit">
+                  <img src="/img/burgerbutton.png" width=50px>
+                  Place order
+                </button>
+              </div>
+            </section>
+          </section>
+          <section v-if="showorder" class="orderinfo">
+            <div id="infowrapper">
+              <h2>Your Order</h2>
+              <p>Name: {{orderName}} </p>
+              <p>Email: {{orderEmail}} </p>
+              <p>Street: {{orderStreet}} </p>
+              <p>House: {{orderHouse}} </p>
+              <p>Payment: {{orderPayment}} </p>
+              <p>Gender: {{orderGender}} </p>
+              <p>Order: {{orderBurgers}} </p>
             </div>
           </section>
-        </section>
+        </div>
       </main>
       <hr>
       <footer>
