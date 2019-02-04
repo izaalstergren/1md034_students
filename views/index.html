@@ -21,7 +21,6 @@
             This is where you execute burger selection
           </p>
           <div id='wrapper'>
-            <!--CODE FOR VUE-->
             <div v-for="burger in burgers" class="box" v-bind:class=burger.box>
                 <label v-bind:for=burger.name><h4>{{ burger.name }}</h4></label>
                 <input type="checkbox" v-bind:id=burger.name name="burgerOrder" />
@@ -37,38 +36,6 @@
                   </li>
                 </ul>
             </div>
-            <!--END OF CODE FOR VUE-->
-
-            <!--RAW HTML CODE-->
-            <!--<div class="box a">
-              <h4>Cheeses is Born Burger</h4>
-              <img src="/img/cheeseburger.jpg"
-                  alt="Cheeseburger" width=250px height=230px/>
-              <ul>
-                <li>750 kCal</li>
-                <li>Contains <span class="allergy">lactose</span></li>
-                <li>Contains <span class="allergy">gluten</span></li>
-              </ul>
-            </div>
-            <div class="box b">
-              <h4>Rest in Peas Burger</h4>
-              <img src="/img/veggieburger.jpg"
-                  alt="Veggieburger" width=250px height=230px/></td>
-              <ul>
-                <li>450 kCal</li>
-                <li>Contains <span class="allergy">gluten</span></li>
-              </ul>
-            </div>
-            <div class="box c">
-              <h4>Somethings Fishy Burger</h4>
-              <img src="/img/Fishburger.jpg"
-                  alt="Fishburger" width=250px height=230px/></td>
-              <ul>
-                <li>600 kCal</li>
-                <li>Contains <span class="allergy">lactose</span></li>
-                <li>Contains <span class="allergy">gluten</span></li>
-              </ul>
-            </div> -->
           </div>
         </section>
         <div id="ordering">
